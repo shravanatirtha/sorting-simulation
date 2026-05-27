@@ -1,10 +1,10 @@
-package javaSource;
+package com.shravanatirtha.notes;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Sorting {
-    public static void main(String[] args) {
+    public void sortingMain() {
         try (Scanner sc = new Scanner(System.in)) {
             ArrayList<String> list = new ArrayList<>();
             StringSorting stringSorting = new StringSorting();

@@ -1,4 +1,4 @@
-package javaSource;
+package com.shravanatirtha.notes;
 
 import java.util.*;
 

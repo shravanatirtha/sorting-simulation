@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="heading">
+        <h1> Notes App </h1>
+        <p>Your Notes and Sorting Simulation App</p>
+    </div>
+    <div class="banner">
+        <textarea id="newNote" placeholder="Create a note here..." autocomplete="off"></textarea>
+        <button onclick="saveNote()">Save</button>
+    </div>
+    <div class = "notes" id="notesContainer">        
+    </div>
+    <script>
+        let counter = 1;
+        function saveNote() {
+            const noteTextArea = document.getElementById('newNote');
+            const noteText = noteTextArea.value;
+
+            if (!noteText.trim()) {
+                alert("Cannot save empty note!");
+                return;
+            }
+
+            const unid = "newNote" + counter;
+            const payload = {
+                id: unid,
+                value: noteText
+            }
+
+            fetch('/api/notes', {
+                method: 'POST',
+                headers: {
+                    'Content-type': 'application/json'
+                },
+                body: JSON.stringify(payload),
+            })
+                .then(response => response.text())
+                .then(data => {
+                    const notesContainer = document.getElementById('notesContainer');
+                    const newSavedNote = document.createElement('textarea');
+
+                    newSavedNote.id = "savedNote" + counter;
+                    newSavedNote.value = data;
+                    notesContainer.appendChild(newSavedNote);
+                    noteTextArea.value = '';
+                    
+                    counter++;
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
+    </script>
+</body>
+
+</html>
