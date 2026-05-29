@@ -52,7 +52,7 @@ textarea {
     border-radius: 8px;
     color: #000000;
     font-size: 1rem;
-    margin-bottom: 1.25rem;
+    margin: 1.25rem;
     outline: none;
     font-family: inherit;
     resize: vertical; /* Allows users to drag up/down but not break layout widthwise */
@@ -63,23 +63,22 @@ textarea:focus {
 }
 
 /* Action Button centered inside .banner */
-.banner button {
+button {
     background-color: #dc7005;
     color: #ffffff;
     border: none;
-    margin-left: 5px;
+    margin-left: 1.25rem;
     padding: 0.75rem 1.5rem;
     font-size: 1rem;
     font-weight: 600;
     border-radius: 8px;
     cursor: pointer;
-    width: 30%; /* Balanced width for the action button */
+    width: 10%; /* Balanced width for the action button */
     transition: background-color 0.2s ease;
 }
 
 .notes{
-    margin-top: 2rem; /* Adds clean spacing below the header */
-    display: flex;
+    margin: 2rem; /* Adds clean spacing below the header */
     align-items: center; /* Centers the inner textarea & button horizontally */
     width: 50%;
 }

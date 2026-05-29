@@ -17,7 +17,7 @@
         <textarea id="newNote" placeholder="Create a note here..." autocomplete="off"></textarea>
         <button onclick="saveNote()">Save</button>
     </div>
-    <div class = "notes" id="notesContainer">        
+    <div class="notes" id="notesContainer">
     </div>
     <script>
         let counter = 1;
@@ -47,12 +47,16 @@
                 .then(data => {
                     const notesContainer = document.getElementById('notesContainer');
                     const newSavedNote = document.createElement('textarea');
+                    const deleteButton = document.createElement('button');
 
                     newSavedNote.id = "savedNote" + counter;
                     newSavedNote.value = data;
+                    deleteButton.textContent = 'Delete';
+
                     notesContainer.appendChild(newSavedNote);
+                    notesContainer.appendChild(deleteButton);
+
                     noteTextArea.value = '';
-                    
                     counter++;
                 })
                 .catch(error => {
