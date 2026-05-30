@@ -25,7 +25,12 @@ public class NotesApplication {
 	@ResponseBody
 	public String receivedNote(@RequestBody NotePayload payload) {
 		System.out.println("Received note from frontend: " + payload.getValue() +" from "+ payload.getId());
+		createNote(payload);
 		return payload.getValue();
+	}
+
+	public void createNote(NotePayload payload){
+
 	}
 
 	static class NotePayload {
