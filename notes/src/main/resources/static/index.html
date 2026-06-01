@@ -28,11 +28,24 @@
 
         function loadNotes(){
             fetch('/api/notes')
-            .then(response => response.json)
-            .then(notesList = {
-
+            .then(response => response.json())
+            .then(notesList => {
+                notesList.forEach(note => {
+                    createNote(note.id, note.value);
+                counter++;
+                });
             })
-            .catch()
+            .catch(error => console.error('Error loading asset notes:', error));
+        }
+
+        function createNote(noteId, noteText ){
+            const notesContainer = document.getElementById('notesContainer');
+            const savedNote = document.getElementById('textarea');
+
+            newSavedNote.id = noteId;
+            newSavedNote.value=noteText;
+
+            notesContainer.appendChild(newSavedNote);
         }
 
         function saveNote() {
